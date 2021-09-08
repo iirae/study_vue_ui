@@ -1,0 +1,383 @@
+input[type="text"],
+input[type="tel"],
+input[type="number"],
+input[type="email"],
+input[type="time"],
+input[type="search"] {
+  height: 48px;
+  font-size: 16px;
+  color: inherit;
+  line-height: 48px;
+  font-weight: 500;
+  border-width: 0;
+
+  &::placeholder {
+    color: $color-gray-500;
+    font-weight: 300;
+  }
+
+  &.text-security {
+    -webkit-text-security:disc;
+  }
+
+  &:focus, &:active {
+  }
+  outline: none;
+  -webkit-tap-highlight-color: rgba(0,0,0,0);
+}
+
+.form-group {
+    position: relative;
+    padding-bottom: $spacer-m;
+  
+    &.pb-0 {
+      padding-bottom: 0;
+      & + .pb-0 {
+        margin-top: $spacer-r;
+      }
+    }
+    .flex-wrap {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      .form-group {
+        padding-bottom: 0;
+      }
+      .f-24 {
+        font-size: 24px;
+      }
+    }
+  
+    .head {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      .sub {
+        font-size: 12px;
+        color: $color-gray-700;
+      }
+    }
+    .input-label {
+      display: block;
+      font-size: 12px;
+      line-height: 1.5;
+      letter-spacing: -0.2px;
+      font-weight: 500;
+    }
+    .text-error {
+      position: absolute;
+      bottom: 10px;
+      left: 0;
+      font-size: 12px;
+      line-height: 1.67;
+    }
+    .f-text {
+      position: relative;
+      display: block;
+      width: 100%;
+      border-bottom: solid 1px $color-gray-500;
+      &::after {
+        content: "";
+        position: absolute;
+        bottom: -1px;
+        left: 0;
+        display: block;
+        width: 0;
+        height: 2px;
+        background: $color-bk;
+      }
+      input[readonly] {
+        margin-top: 6px;
+        color: $color-gray-600;
+        background: $color-gray-300;
+      }
+      .kr {
+        ime-mode: active;
+      }
+      &.flex-wrap {
+        display: flex;
+        justify-content: space-between;
+        align-items: baseline;
+  
+        &.al-right {
+          input {
+            text-align: right;
+          }
+        }
+        .text {
+          font-size: 14px;
+          white-space: nowrap;
+        }
+      }
+    }
+    .timer {
+      position: absolute;
+      top: 0;
+      right: 0;
+      font-size: 12px;
+      color: $color-danger;
+      line-height: 48px;
+    }
+    input {
+      width: 100%;
+      &:focus {
+        outline-width: 0;
+      }
+    }
+    .text-error {
+      display: none;
+      font-size: 12px;
+      line-height: 1.67;
+    }
+    .tags {
+      margin-left: -6px;
+    }
+    .tag {
+      display: inline-flex;
+      align-items: center;
+      margin: 6px 0 0 6px;
+      padding: 0 6px;
+      height: 20px;
+      font-size: 12px;
+      line-height: 20px;
+      font-weight: 500;
+      color: $color-bk;
+      white-space: nowrap;
+      border-radius: 6px; 
+      .btn-icon {
+        height: 12px;
+        line-height: 12px;
+        font-size: 0;
+        i {
+          font-size: 1rem;
+        }
+      }
+    }
+  
+    &.on {
+      & > .f-text {
+        &::after {
+          width: 100%;
+          transition: 0.4s;
+        }
+      }
+    }
+    &.error {
+      & > .f-text {
+        &::after {
+          width: 100%;
+          background-color: $color-danger;
+          transition: 0.4s;
+        }
+      }
+      .text-error {
+        display: block;
+      }
+    }
+  
+    &.search {
+      display: flex;
+      justify-content: space-between;
+      padding: {
+        right: 0; 
+        bottom: 0;
+      }
+      height: 46px;
+      border: solid 1px $color-bk;
+      border-radius: 6px;
+      input {
+        height: 46px;
+        line-height: 46px;
+        border-radius: 0 6px 6px 0;
+        &:focus {
+          outline-width: 1px;
+        }
+      }
+      .f-text {
+        position: relative;
+        flex: 1 1 auto;
+        padding-left: 42px;
+        box-sizing: border-box;
+        border-width: 0;
+        &::before {
+          @include pseudo-bg(24px, 24px);
+          position: absolute;
+          top: 12px;
+          left: 8px;
+          background-image: url($bg_addr + "ico_search.svg");
+        }
+      }
+      .btn-icon {
+        display: none;
+        opacity: 0;
+        flex: 0 0 auto;
+        margin-top: -1px;
+        transition: opacity 0.75s;
+        & + .btn-icon {
+          border-left: solid 1px #000;
+        }
+        &.show {
+          display: block;
+          opacity: 1;
+        }
+      }
+      
+      &.on {
+        .f-text {
+          &::after {
+            display: none;
+          }
+        }
+      }
+      &.filter {
+        margin: {
+          left: -8px;
+          right: -8px;
+        }
+        input::placeholder {
+          letter-spacing: -0.09em;
+        }
+        .btn-icon {
+          display: block;
+          opacity: 1;
+        }
+      }
+    }
+    
+    &.select {
+      .f-text {
+        position: relative;
+        padding-right: 48px;
+        box-sizing: border-box;
+      }
+      input[readonly] {
+        color: inherit;
+        background: transparent;
+      }
+      .btn-trigger {
+        position: absolute;
+        top: 0;
+        right: 0;
+        display: block;
+        width: 100%;
+        height: 48px;
+        background: {
+          image: url($bg_addr + "ico_arrow_down.svg");
+          repeat: no-repeat;
+          size: 48px auto;
+          position: top right;
+        }
+      }
+  
+      &.over {
+        .btn-trigger {
+           width: 48px;
+        }
+      }
+    }
+  
+    &.text-select {
+      .f-text {
+        display: flex;
+        input {
+          flex: 1 1 auto;
+          // width: auto;
+          &[readonly] {
+            background: transparent;
+          }
+        }
+      }
+      .type-select {
+        position: relative;
+        display: flex;
+        align-items: center;
+        padding-right: 28px;
+        .btn-trigger {
+          position: absolute;
+          top: 0;
+          right: 0;
+          bottom: 0;
+          left: 0;
+          background: url($bg_addr + "ico_arrow_down_16.svg") no-repeat center right;
+          background-size: 16px auto;
+        }
+      }
+      .color {
+        display: block;
+        width: 24px;
+        height: 24px;
+        border-radius: 50%;
+      }
+    }
+  
+    &.jumin {
+      .f-text {
+        display: flex; 
+        align-items: center;
+        & > .first, .masking {
+          flex: 1;
+        }
+        input {
+          letter-spacing: 3px;
+          &::placeholder {
+            letter-spacing: 0;
+          }
+        }
+        .text {
+          flex: 0 0 20px;
+        }
+        .btn-icon {
+          flex: 0 0 auto;
+        }
+      }
+      .masking {
+        position: relative;
+        &.text-security {
+          input {
+            -webkit-text-security:disc;
+          }
+        }
+        .dots {
+          position: absolute;
+          top: 49px;
+          left: 12px;
+          display: flex;
+          align-items: center;
+          width: 100%;
+          height: 48px;
+          background: $color-primary;
+        }
+        .dot {
+          display: inline-block;
+          margin-left: 5px;
+          width: 8px;
+          height: 8px;
+          background: $color-gray-500;
+          border-radius: 50%;
+        }
+      }
+    }
+    &.board {
+      .matter {
+        margin-top: $spacer-xs;
+        border: 1px solid $color-gray-500;
+      }
+      .f-text {
+        padding: {
+          left: $spacer-s;
+          right: $spacer-s;
+        }
+        box-sizing: border-box;
+        &::after {
+          display: none;
+        }
+      }
+      .f-textarea {
+        border-width: 0;
+        textarea {
+          height: 200px;
+        }
+      }
+    }
+  }
+  

@@ -21,3 +21,24 @@ $color-wh: #fff;
 
 $color-danger: #ff3c3c;
 $color-info: #008dff;
+
+// spacer
+$spacer-xs: 6px;
+$spacer-s: 10px;
+$spacer-r: 16px;
+$spacer-m: 30px;
+$spacer-l: 60px;
+
+$bg_addr: "~@/assets/resources/img/";
+
+@mixin pseudo-bg($width: 0, $height: 0) {
+    content: '';
+    display: inline-block;
+    width: $width;
+    height: $height;
+    background: {
+      position: center center;
+      repeat: no-repeat;
+      size: $width auto;
+    }
+  }
