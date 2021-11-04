@@ -5,8 +5,8 @@
             <button class="btn btn-normal small" v-if="formButtonName">{{ formButtonName }}</button>
         </div>
         <span class="f-text">
-            <input type="text" :placeholder="formPlaceholder" v-if="!isNumber">
-            <input type="tel" pattern="[0-9]*" inputmode="numeric" :placeholder="formPlaceholder" maxlength="6" v-if="isNumber">
+            <input type="text" :placeholder="formPlaceholder" v-if="!isNumber" :id="inputId">
+            <input type="tel" pattern="[0-9]*" inputmode="numeric" :placeholder="formPlaceholder" maxlength="6" v-if="isNumber" :id="inputId">
         </span>
         <p class="text-error" v-if="formErrorMsg">{{ formErrorMsg }}</p>
     </div>
@@ -22,6 +22,7 @@
             formErrorMsg: String,
             isNumber: Boolean,
             formPlaceholder: String,
+            inputId: String,
         }
     }
 </script>

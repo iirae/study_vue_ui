@@ -78,3 +78,22 @@ background: $color-wh;
         }
     }
 }
+
+.nav {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    ul {
+        display: flex;
+        justify-content: space-between;
+    }
+    li {
+        flex: 1;
+    }
+    a {
+        display: block;
+        padding: 10px 0;
+        text-align: center;
+    }
+}
