@@ -19,7 +19,7 @@
             isSelectedTab: String,
         },
         data: () => { return {
-
+            tagetLi: Object,
         } },
         created: function() {
 
@@ -29,37 +29,22 @@
         },
         methods: {
             init() {
-                this.getSelectedTabWidth();
-                // const $this = $(e.target);
-                // const $tabItem = $this.closest('li'),
-                //     $wrap = $this.closest('.module-tab');
-
-                // let tabItemWidth = $this.width();
-                // let tabItemPositionLeft = $tabItem.position().left + $this.closest('.tab').scrollLeft();
-
-                // function tabDeco($wrap, tabItemWidth, tabItemOffsetLeft) {
-                    // $($wrap).find('.tab-point').css({
-                    //     'width': tabItemWidth,
-                    //     'transform': ('translate3d(' + (tabItemOffsetLeft) + 'px, 0, 0)')
-                    // });
-                // }
+                this.tagetLi = document.querySelector('li.on');
+                this.getSelectedTabWidth(this.tagetLi);
             },
             onClickTab(tabId) {
-                // console.log('onClickTab', tabId);
+                this.tagetLi = event.target.closest('li');
                 this.$emit('selectedTab', tabId);
-                this.getSelectedTabWidth();
+                this.getSelectedTabWidth(this.tagetLi);
             },
-            getSelectedTabWidth() {
-                let tabInfo = document.querySelector('li.on').getBoundingClientRect();
+            getSelectedTabWidth(tagetLi) {
+                let tabInfo = tagetLi.getBoundingClientRect();
                 let tabWidth = tabInfo.width;
                 let tabPositionLeft = tabInfo.left;
 
                 const tabPoint = document.querySelector('.tab-point');
 
                 tabPoint.style.cssText = 'width:' + tabWidth + 'px; transform: translate3d(' + tabPositionLeft + 'px, 0, 0)';
-                // tabPoint.style.width = tabWidth;
-                // tabPoint.style.transform = 'translate3d(' + tabPositionLeft + 'px, 0, 0';
-                console.log(tabWidth, tabPositionLeft);
             }
         }
     }
